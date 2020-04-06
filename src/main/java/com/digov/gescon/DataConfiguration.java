@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 public class DataConfiguration {
 	
-	@Bean
+/*	@Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
@@ -20,9 +20,19 @@ public class DataConfiguration {
         dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
-    }
+    }*/
 	
 	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		dataSource.setUrl("jdbc.postgresql://localhost:5432/postgres");
+		dataSource.setUsername("postgres");
+		dataSource.setPassword("zooropa");		
+		return dataSource;
+	}
+	
+/*	@Bean
 	public JpaVendorAdapter jpaVendorAdapter(){
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.MYSQL);
@@ -31,6 +41,6 @@ public class DataConfiguration {
 		adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
 		adapter.setPrepareConnection(true);
 		return adapter;
-	}
+	} */
 
 }
